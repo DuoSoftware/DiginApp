@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Digin</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_login">Digin</string>
     <string name="btnLoginStr">Login</string>
     <string name="hintUsernameLogin">Username</string>
     <string name="hintPasswordLogin">Password</string>
+    <string name="loginLogoContentDes">Digin login logo</string>
+    <string name="errorEmptyUsername">Oops! you missed username</string>
+    <string name="errorEmptyPassword">Oops! you missed password</string>
+    <string name="errorInvalidUsername">Oh uh! invalid username</string>
 </resources>
