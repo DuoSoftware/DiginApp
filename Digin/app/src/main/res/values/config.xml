@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_uri">104.131.48.155:3048</string>
+    <string name="base_uri">104.131.48.155</string>
+</resources>
