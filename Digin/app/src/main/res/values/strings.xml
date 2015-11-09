@@ -8,4 +8,8 @@
     <string name="errorEmptyUsername">Oops! you missed username</string>
     <string name="errorEmptyPassword">Oops! you missed password</string>
     <string name="errorInvalidUsername">Oh uh! invalid username</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="Des_splashlogo">splash logo image</string>
+    <string name="error_InterentConnectivity">Uh oh! looks like you are out from your network</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>
