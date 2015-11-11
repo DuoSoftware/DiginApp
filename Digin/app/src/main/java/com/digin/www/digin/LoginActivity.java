@@ -82,40 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                 if(isEmailValid(uname)){
                     final ProgressBar loginProgress = (ProgressBar) findViewById(R.id.loginProgressBar);
                     loginProgress.setVisibility(View.VISIBLE);
-                    String url = "http://"+getString(R.string.auth_uri)+"/Login/"+uname+"/"+pwd+"/"+getString(R.string.base_uri);
-                    Log.i(TAG,url);
-                    JsonObjectRequest jsonRequest = new JsonObjectRequest
-                            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    // the response is already constructed as a JSONObject!
-                                    try {
-                                        SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.authObj), MODE_PRIVATE).edit();
-                                        editor.putString("UserID", response.getString("UserID"));
-                                        editor.putString("Username", response.getString("Username"));
-                                        editor.putString("Name", response.getString("Name"));
-                                        editor.putString("Email", response.getString("Email"));
-                                        editor.putString("SecurityToken", response.getString("SecurityToken"));
-                                        editor.commit();
-                                        loginProgress.setVisibility(View.INVISIBLE);
-                                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }, new Response.ErrorListener() {
-
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    error.printStackTrace();
-                                }
-                            });
-
-                    Volley.newRequestQueue(this).add(jsonRequest);
-
-
+                    DuoStoreService duoStoreService = new DuoStoreService();
+                    JSONObject authObj = duoStoreService.authenticateUser(this,uname,pwd);
                 }else showToast(getString(R.string.errorInvalidUsername));
             }else showToast(getString(R.string.errorEmptyPassword));
         }else showToast(getString(R.string.errorEmptyUsername));
