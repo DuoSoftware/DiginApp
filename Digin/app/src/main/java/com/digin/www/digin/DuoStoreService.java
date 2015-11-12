@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,34 +22,8 @@ import org.json.JSONObject;
  */
 public class DuoStoreService {
 
-    private JSONObject resultObject = null;
-
-    public JSONObject authenticateUser(Context context, String uname, String pwd){
-//        String url = "http://"+context.getString(R.string.auth_uri)+"/Login/"+uname+"/"+pwd+"/"+context.getString(R.string.base_uri);
-//        //String url = "http://httpbin.org/html";
-//
-//// Request a string response
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) throws JSONException {
-//                        resultObject = new JSONObject(response);
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//                // Error handling
-//                System.out.println("Something went wrong!");
-//                error.printStackTrace();
-//
-//            }
-//        });
-//
-//// Add the request to the queue
-//        Volley.newRequestQueue(context).add(stringRequest);
-        return resultObject;
-    }
+    private  final String TAG = "Digin_log";
+    private JSONObject resultObj = new JSONObject();
 
     public JSONObject getDashboards(){
 //        String url = "http://"+getString(R.string.auth_uri)+"/Login/"+uname+"/"+pwd+"/"+getString(R.string.base_uri);

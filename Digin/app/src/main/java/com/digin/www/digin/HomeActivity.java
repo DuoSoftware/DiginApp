@@ -1,5 +1,7 @@
 package com.digin.www.digin;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +62,24 @@ public class HomeActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+        final SharedPreferences pref = getSharedPreferences(getString(R.string.authObj), 0);
+        //set the nav menu header text
+        TextView uname = (TextView) findViewById(R.id.navUsername);
+        TextView uemail = (TextView) findViewById(R.id.navEmail);
+        uname.setText(pref.getString("Name","User Name"));
+        uemail.setText(pref.getString("Email","User Email"));
+
+        //logout event
+        ImageView btnLogout = (ImageView) findViewById(R.id.ivLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pref.edit().clear().commit();
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         return true;
     }
 
