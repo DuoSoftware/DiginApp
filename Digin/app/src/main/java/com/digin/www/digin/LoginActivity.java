@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         toast.setGravity(Gravity.BOTTOM, 0, 20);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
+        
         toast.show();
     }
 
